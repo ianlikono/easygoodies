@@ -32,7 +32,7 @@ class App extends StatelessWidget {
   }
 
   Route _routesNavigator(RouteSettings settings) {
-    bool userLoggedIn = false;
+    bool userLoggedIn = true;
     switch (settings.name) {
       case '/':
         {
