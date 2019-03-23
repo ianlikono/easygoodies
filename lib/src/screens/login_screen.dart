@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Sign In',
-                      style: TextStyle(fontSize: 50.0, color: Colors.white),
+                      style: TextStyle(fontSize: 30.0, color: Colors.white),
                     )
                   ],
                 ),
