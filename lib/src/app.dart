@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import './screens/create_account_screen.dart';
+import './screens/forgot_password_screen.dart';
 import './screens/login_screen.dart';
+import './screens/shop_home_screen.dart';
 
 ThemeData _mainTheme() {
   final ThemeData base = ThemeData.light();
@@ -23,8 +26,42 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'easyGoodies',
-      home: LoginScreen(),
       theme: _mainTheme(),
+      onGenerateRoute: _routesNavigator,
     );
+  }
+
+  Route _routesNavigator(RouteSettings settings) {
+    bool userLoggedIn = false;
+    switch (settings.name) {
+      case '/':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return !userLoggedIn ? LoginScreen() : ShopHomeScreen();
+          });
+        }
+        break;
+      case '/forgot-password':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return ForgotPasswordScreen();
+          });
+        }
+        break;
+      case '/create-account':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return CreateAccountScreen();
+          });
+        }
+        break;
+      default:
+        {
+          return MaterialPageRoute(builder: (context) {
+            return LoginScreen();
+          });
+        }
+        break;
+    }
   }
 }
