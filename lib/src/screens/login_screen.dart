@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                       iconType: 'password',
                     ),
                     SizedBox(height: 20.0),
-                    AuthButton(buttonName: 'Login'),
+                    AuthButton(buttonName: 'LOGIN'),
                     SizedBox(height: 12.0),
                     FlatButton(
                       child: Text(
