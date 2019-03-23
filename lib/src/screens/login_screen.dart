@@ -51,7 +51,9 @@ class LoginScreen extends StatelessWidget {
                         'Forgot Password',
                         style: TextStyle(color: Colors.grey[200]),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/forgot-password');
+                      },
                     ),
                     SizedBox(height: 20.0),
                     FlatButton(
@@ -59,7 +61,9 @@ class LoginScreen extends StatelessWidget {
                         'Create Account',
                         style: TextStyle(color: Colors.grey[200], fontSize: 20),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/create-account');
+                      },
                     ),
                   ],
                 )
