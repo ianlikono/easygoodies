@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/photo.dart';
+import '../widgets/app_bar_menu.dart';
+import '../widgets/drawer_menu.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return HomeScreenState();
-  }
-}
-
-class HomeScreenState extends State<HomeScreen> {
-  List list = ['12', '11'];
-  List<Photo> photos = <Photo>[
+class HomeScreen extends StatelessWidget {
+  final List list = ['12', '11'];
+  final List<Photo> photos = <Photo>[
     Photo(
       assetName: 'images/veg.jpg',
       title: 'Fruits & Vegetables',
@@ -48,7 +43,6 @@ class HomeScreenState extends State<HomeScreen> {
 
   final List<String> items = ['Balbhadra', 'Maulik', 'Roshi'];
   static const double height = 366.0;
-  String name = 'My Wishlist';
 
   @override
   Widget build(BuildContext context) {
@@ -60,145 +54,8 @@ class HomeScreenState extends State<HomeScreen> {
     ShapeBorder shapeBorder;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text('Shop Name'),
-        actions: <Widget>[
-          IconButton(
-            tooltip: 'Seearch',
-            icon: Icon(Icons.search),
-            onPressed: () async {
-              final int selected = await showSearch<int>(
-                context: context,
-                // delegate: _delegate,
-              );
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Container(
-              height: 150.0,
-              width: 30.0,
-              child: GestureDetector(
-                onTap: () {},
-                child: Stack(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.shopping_cart),
-                      onPressed: () {
-                        // TODO: navigate to cart screen
-                      },
-                    ),
-                    list.length == 0
-                        ? Container()
-                        : Positioned(
-                            child: Stack(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.brightness_1,
-                                  size: 20.0,
-                                  color: Colors.orange.shade500,
-                                ),
-                                Positioned(
-                                  top: 4.0,
-                                  right: 5.5,
-                                  child: Center(
-                                    child: Text(
-                                      list.length.toString(),
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 11.0,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            Card(
-              child: UserAccountsDrawerHeader(
-                accountName: Text('Ian Likono'),
-                accountEmail: Text('ianlikono@gmail.com'),
-                onDetailsPressed: () {
-                  // TODO: navigate to accounts screen
-                },
-                decoration: BoxDecoration(
-                    backgroundBlendMode: BlendMode.difference,
-                    color: Colors.white30),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://www.fakenamegenerator.com/images/sil-female.png"),
-                ),
-              ),
-            ),
-            Card(
-              elevation: 4.0,
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.favorite),
-                    title: Text(name),
-                    onTap: () {
-                      // TODO: navigate to item favourite screen(Item_Screen)
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.history),
-                    title: Text('Order History'),
-                    onTap: () {
-                      // TODO: navigate to order history page
-                    },
-                  )
-                ],
-              ),
-            ),
-            Card(
-              elevation: 4.0,
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text('Settings'),
-                    onTap: () {
-                      // TODO: navigate to settings screen
-                    },
-                  ),
-                  Divider(),
-                  ListTile(
-                    leading: Icon(Icons.help),
-                    title: Text('Help'),
-                    onTap: () {
-                      // TODO: navigate to help screen
-                    },
-                  )
-                ],
-              ),
-            ),
-            Card(
-              elevation: 4.0,
-              child: ListTile(
-                leading: Icon(Icons.power_settings_new),
-                title: Text('Logout',
-                    style: TextStyle(color: Colors.redAccent, fontSize: 17.0)),
-                onTap: () {
-                  // TODO: Logout and go to login screen
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBarMenu(),
+      drawer: DrawerMenu(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(children: <Widget>[
@@ -259,7 +116,7 @@ class HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              height: 188.0,
+              height: 230.0,
               margin: EdgeInsets.only(left: 5.0),
               child:
                   ListView(scrollDirection: Axis.horizontal, children: <Widget>[
@@ -521,7 +378,7 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Icon keyloch = Icon(
+  final Icon keyloch = Icon(
     Icons.arrow_forward,
     color: Colors.black26,
   );
