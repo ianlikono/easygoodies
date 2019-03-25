@@ -12,7 +12,7 @@ class DrawerMenu extends StatelessWidget {
               accountName: Text('Ian Likono'),
               accountEmail: Text('ianlikono@gmail.com'),
               onDetailsPressed: () {
-                // TODO: navigate to accounts screen
+                Navigator.pushNamed(context, '/user');
               },
               decoration: BoxDecoration(
                   backgroundBlendMode: BlendMode.difference,

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:goodies/src/screens/create_account_screen.dart';
+import 'package:goodies/src/screens/forgot_password_screen.dart';
+import 'package:goodies/src/screens/login_screen.dart';
 
 import './screens/splash_screen.dart';
+import './screens/user_profile_screen.dart';
 
 class App extends StatelessWidget {
   @override
@@ -19,42 +23,50 @@ class App extends StatelessWidget {
           primaryColor: Colors.white,
           primaryColorDark: Colors.white30,
           accentColor: Colors.blue),
-      home: new SplashScreen(title: 'Groceries'),
+      onGenerateRoute: _routesNavigator,
     );
   }
 
-  // Route _routesNavigator(RouteSettings settings) {
-  //   bool userLoggedIn = true;
-  //   switch (settings.name) {
-  //     case '/':
-  //       {
-  //         return MaterialPageRoute(builder: (context) {
-  //           return !userLoggedIn ? LoginScreen() : HomeScreen();
-  //         });
-  //       }
-  //       break;
-  //     case '/forgot-password':
-  //       {
-  //         return MaterialPageRoute(builder: (context) {
-  //           return ForgotPasswordScreen();
-  //         });
-  //       }
-  //       break;
-  //     case '/create-account':
-  //       {
-  //         return MaterialPageRoute(builder: (context) {
-  //           return CreateAccountScreen();
-  //         });
-  //       }
-  //       break;
-  //     default:
-  //       //TODO: change Default Route
-  //       {
-  //         return MaterialPageRoute(builder: (context) {
-  //           return LoginScreen();
-  //         });
-  //       }
-  //       break;
-  //   }
-  // }
+  Route _routesNavigator(RouteSettings settings) {
+    bool userLoggedIn = true;
+    switch (settings.name) {
+      case '/':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return !userLoggedIn ? SplashScreen() : SplashScreen();
+          });
+        }
+        break;
+      case '/forgot-password':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return ForgotPasswordScreen();
+          });
+        }
+        break;
+      case '/create-account':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return CreateAccountScreen();
+          });
+        }
+        break;
+
+      case '/user':
+        {
+          return MaterialPageRoute(builder: (context) {
+            return UserProfile();
+          });
+        }
+        break;
+      default:
+        //TODO: change Default Route
+        {
+          return MaterialPageRoute(builder: (context) {
+            return LoginScreen();
+          });
+        }
+        break;
+    }
+  }
 }
