@@ -66,6 +66,7 @@ flutter:
      - images/pineapple.jpg
      - images/tomato.jpg
      - images/gro.jpg
+     - assets/address.json
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
